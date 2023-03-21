@@ -67,7 +67,8 @@ class ColaPrioridadLimitada(object):
 
 
 class TransformarInversaMuestra(object):
-    def __init__(self, pesos, objetos):
+    def __init__(self, pesos, objetos):  # inicializa un objeto con dos parametros
+        # verifica que peso y objetos tengan la misma longitud con "assert"
         assert pesos and objetos and len(pesos) == len(objetos)
         self.objetos = objetos
         tot = float(sum(pesos))
@@ -81,7 +82,7 @@ class TransformarInversaMuestra(object):
             acumulado += p
             self.probs.append(acumulado)
 
-    def muestra(self):
+    def muestra(self):  # devuelve un elemento seleccionado aleatoriamente  basado en "probs" calculados
         objetivo = random.random()
         i = 0
         while i + 1 != len(self.probs) and objetivo > self.probs[i]:
@@ -89,7 +90,9 @@ class TransformarInversaMuestra(object):
         return self.objetos[i]
 
 
+# devulve elementos qeu tienen el valor maximo
 def _generic_arg(iterable, funcion, mejor_funcion):
+    # si hay mas de una una devulve aleatoriamente uno de ellos
     valores = [funcion(x) for x in iterable]
     mejor_valor = mejor_funcion(valores)
     candidatos = [x for x, value in zip(
@@ -97,12 +100,13 @@ def _generic_arg(iterable, funcion, mejor_funcion):
     return random.choice(candidatos)
 
 
-def argmin(iterable, funcion):
+def argmin(iterable, funcion):  # llamara a la funcion generic_arg
+    # se pasa los argumentos iterable y funccion , y el metodo "MIN"
     return _generic_arg(iterable, funcion, min)
 
 
 def argmax(iterable, funcion):
-    return _generic_arg(iterable, funcion, max)
+    return _generic_arg(iterable, funcion, max)  # con el metodo "MAX"
 
 
 class ProblemaBusqueda(object):
