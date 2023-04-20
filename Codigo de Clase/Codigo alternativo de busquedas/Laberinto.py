@@ -3,13 +3,13 @@ from busquedas_02 import ProblemaBusqueda, aestrella
 
 MAPA = """
 ##############################
-#         #              #   #
+#                        #   #
 # ####    ########       #   #
 #  o #    #              #   #
-#    ###     ####   ######   #
+#    ###  ########   ######   #
 #         ####      #        #
 #            #  #   #   #### #
-#     ######    #       # x  #
+#     ########  #       #  X #
 #        #      #            #
 ##############################
 """
@@ -39,7 +39,8 @@ class JuegoLaberinto(ProblemaBusqueda):
                 elif self.tablero[y][x].lower() == "x":
                     self.estado_objetivo = (x, y)
 
-        super(JuegoLaberinto, self).__init__(estado_inicial=self.estado_inicial)
+        super(JuegoLaberinto, self).__init__(
+            estado_inicial=self.estado_inicial)
 
     def acciones(self, estado):
         acciones = []
@@ -96,4 +97,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
