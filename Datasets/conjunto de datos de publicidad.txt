@@ -1,0 +1,2 @@
+Este dato expresa las ventas según el tipo de publicidad y el tamaño del costo.
+El conjunto de datos contiene 200 filas de 3 características [TV, Radio, Periódico] y la variable objetivo [Ventas]
